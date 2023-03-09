@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Table:React.FC = () => (
-  <div className="">
-    <header className='flex font-bold text-xs border-y-2 py-5 px-8'>
+  <div className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8">
+    <header className='flex font-bold text-xs border-y-2 py-5 px-8 sm:border-t-0'>
       <h3>CRYPTO</h3>
     </header>
     <table className='w-full'>
