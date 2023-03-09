@@ -2,7 +2,7 @@ import React from 'react'
 import search from "../../assets/search-icon.png"
 
 const Hero:React.FC = () => (
-  <section className='flex font-bold justify-between my-7 sm:text-2xl items-center'>
+  <section className='flex font-bold px-8 justify-between my-7 sm:text-2xl items-center'>
     <h2>Harga Crypto Hari Ini</h2>
     <div className='sm:hidden'>
       <img src={search} className="h-5"></img>
