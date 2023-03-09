@@ -1,21 +1,12 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
+import { Navbar, Badge } from './Components'
 import './App.css'
 
-function App() {
-  const [ count, setCount ] = useState<any>(0)
-
-  useEffect(() => {
-    console.log("hello")
-  }, [])
-
-  return (
-    <div className="App">
-      <div>asdas
-
-        
-      </div>
-    </div>
-  )
-}
+const App:React.FC = () => (
+  <>
+    <Navbar />
+    <Badge />
+  </>
+)
 
 export default App
