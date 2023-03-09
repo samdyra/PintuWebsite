@@ -1,11 +1,14 @@
 import React from 'react'
-import { Navbar, Badge } from './Components'
+import {
+  Navbar, Badge, Table 
+} from './Components'
 import './App.css'
 
 const App:React.FC = () => (
   <>
     <Navbar />
     <Badge />
+    <Table />
   </>
 )
 
