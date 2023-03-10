@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Badge:React.FC = () => (
   <section className='flex  mt-4 ml-8  overflow-x-scroll h-12 sm:w-fit mb-2'>
@@ -12,4 +12,4 @@ const Badge:React.FC = () => (
   </section>
 )
 
-export default Badge
+export default memo(Badge)

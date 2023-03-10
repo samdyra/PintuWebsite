@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Table:React.FC = () => (
   <div className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8">
@@ -23,4 +23,4 @@ const Table:React.FC = () => (
   </div>
 )
 
-export default Table
+export default memo(Table)

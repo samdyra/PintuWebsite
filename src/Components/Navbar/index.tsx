@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Navbar: React.FC = () => (
   <nav className="bg-white border-gray-200 pt-8 px-8 pb-2 sm:px-8 rounded dark:bg-gray-900 ">
@@ -39,4 +39,4 @@ const Navbar: React.FC = () => (
   </nav>
 )
 
-export default Navbar
+export default memo(Navbar)

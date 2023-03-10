@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import search from "../../assets/search-icon.png"
 
 const Hero:React.FC = () => (
   <section className='flex font-bold px-8 justify-between my-7 sm:text-2xl items-center'>
-    <h2>Harga Crypto Hari Ini</h2>
+    <main>Harga Crypto Hari Ini</main>
     <div className='sm:hidden'>
       <img src={search} className="h-5"></img>
     </div>
@@ -19,4 +19,4 @@ const Hero:React.FC = () => (
   </section>
 )
 
-export default Hero
+export default memo(Hero)
