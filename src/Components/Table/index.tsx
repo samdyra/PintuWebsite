@@ -1,18 +1,21 @@
-import React, { memo } from 'react'
-import axios from 'axios'
-import { useQuery } from 'react-query'
+import React, {
+  memo, useContext, useEffect 
+} from 'react'
+import { Context as CoinListContext } from '../../Context/CryptoContext';
+import { useQuery } from 'react-query';
+import { fetchDataCoin, fetchDataPrice } from "../../Context/helpers/effects"
 
-const Table:React.FC = () => 
+const Table:React.FC = () => {
+  const { state, getAllCoin } = useContext(CoinListContext);
+  const { data: coinDesc } = useQuery('coinDesc', fetchDataCoin)
+  const { data: coinPrice } = useQuery('coinPrice', fetchDataPrice)
 
-// const fetchDataCoin = async () => axios.get("https://api.pintu.co.id/v2/wallet/supportedCurrencies")
-// const fetchDataPrice = async () => axios.get("https://nameless-taiga-23840.herokuapp.com/https://api.pintu.co.id/v2/trade/price-changes", { headers: { "X-Requested-With":  "XMLHttpRequest" } })
+  useEffect(() => {
+    getAllCoin(coinDesc, coinPrice)
+  }, [ coinDesc, coinPrice ])
 
-// const { data: dataCoin } = useQuery('coin', fetchDataCoin) 
-// const { data: dataPrice } = useQuery('price', fetchDataPrice) 
-
-
-  (
-    <div className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8">
+  return (
+    <div className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8" >
       <header className='flex font-bold text-xs border-y-2 py-5 px-8 sm:border-t-0 sm:px-4'>
         <h3 className='sm:hidden'>CRYPTO</h3>
         <thead className='hidden sm:block w-full'>
@@ -69,6 +72,7 @@ const Table:React.FC = () =>
       </table>
     </div>
   )
+}
 
 
 export default memo(Table)
