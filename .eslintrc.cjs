@@ -28,7 +28,6 @@ module.exports = {
     "consistent-return": "warn",
     "no-nested-ternary": "warn",
     // "import/named": "error",
-    "one-var":"warn",
     "no-plusplus": "warn",
     "no-param-reassign": "warn",
     "no-empty": "off",
