@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 const Navbar: React.FC = () => (
   <nav className="bg-white border-gray-200 pt-8 px-8 pb-2 sm:px-8 rounded dark:bg-gray-900 ">
     <div className="container flex flex-wrap items-center justify-between mx-auto">
-      <a href="https://flowbite.com/" className="flex items-center">
+      <a href="https://pintu.co.id/market" className="flex items-center">
         <img src="https://fintech.id/storage/files/shares/logo/logofi/LOGO-pintu.png" className="h-6 mr-3 sm:h-7 " alt="Pintu Logo" />
       </a>
       <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center  ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">

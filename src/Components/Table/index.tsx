@@ -16,7 +16,7 @@ const Table:React.FC = () => (
       </thead>
     </header>
     <table className='hidden w-full sm:block'>
-      <tbody className='flex border-b-2 py-5 w-full'>
+      <tbody className='flex border-b-2 py-5 w-full hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
         <section className='flex pl-2 w-3/12 h-12 justify-center items-center'>
           <img className='h-8 mr-3' src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png' alt='image-coin'></img>
           <div className='flex flex-col items-start'>
@@ -41,7 +41,7 @@ const Table:React.FC = () => (
         </section>
       </tbody>
     </table>
-    <table className='w-full sm:hidden'>
+    <table className='w-full sm:hidden hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
       <tbody className='flex border-b-2 py-5 w-full justify-between'>
         <section className='flex pl-2 w-36 h-12 justify-around items-center'>
           <img className='h-8' src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png' alt='image-coin'></img>
