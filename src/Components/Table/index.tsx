@@ -1,18 +1,16 @@
 import React, {
   memo, useContext, useEffect 
 } from 'react'
+import useCoinData from '../../Context/Hooks/useCoinData';
 import { Context as CoinListContext } from '../../Context/CryptoContext';
-import { useQuery } from 'react-query';
-import { fetchDataCoin, fetchDataPrice } from "../../Context/helpers/effects"
 
 const Table:React.FC = () => {
   const { state, getAllCoin } = useContext(CoinListContext);
-  const { data: coinDesc } = useQuery('coinDesc', fetchDataCoin)
-  const { data: coinPrice } = useQuery('coinPrice', fetchDataPrice)
-
+  const result = useCoinData()
+  
   useEffect(() => {
-    getAllCoin(coinDesc, coinPrice)
-  }, [ coinDesc, coinPrice ])
+    getAllCoin(result)
+  }, [ result ])
 
   return (
     <div className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8" >
