@@ -48,34 +48,48 @@ const Table:React.FC = () => {
     </header>
   )
 
-  const TableDekstop: React.FC<Props> = (props) => (
-    <table className='hidden w-full sm:block'>
-      <tbody className='flex border-b-2 py-5 w-full hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
-        <section className='flex pl-2 w-3/12 h-12 justify-center items-center'>
-          <img className='h-8 mr-3' src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png' alt='image-coin'></img>
-          <div className='flex flex-col items-start'>
-            <h3 className='font-bold'>Bitcoin</h3>
-            <p className='text-gray-500 text-sm'>BTC</p>
-          </div>
-        </section>
-        <section className='flex flex-col pr-4 w-3/12 items-center justify-center'>
-          <h4 className='font-bold'>Rp500.000.000</h4>
-        </section>
-        <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
-          <h3 className='font-medium text-green-600'>2%</h3>
-        </section>
-        <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
-          <h3 className='font-medium text-green-600'>2%</h3>
-        </section>
-        <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
-          <h3 className='font-medium text-green-600'>2%</h3>
-        </section>
-        <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
-          <h3 className='font-medium text-green-600'>2%</h3>
-        </section>
-      </tbody>
-    </table>
-  )
+  const TableDekstop: React.FC<Props> = (props: Props) => {
+    const { list } = props
+    const listElements = list && list.map((el) => {
+      const performance = (time: string) => performanceGetter(time)
+      const latestPrice = `Rp${groupingFormat(parseFloat(el?.latestPrice))}`
+
+      return (
+        <table className='hidden w-full sm:block'>
+          <tbody className='flex border-b-2 py-5 w-full hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
+            <section className='flex ml-4 w-52 h-12 items-center  lg:w-3/12 lg:ml-8'>
+              <img className='h-7 mr-3 lg:h-9' src={el?.logo} alt='image-coin'></img>
+              <div className='flex flex-col items-start'>
+                <h3 className='font-bold text-sm lg:text-base'>{el?.name}</h3>
+                <p className='text-gray-500 text-sm lg:text-base'>{el?.currencyGroup}</p>
+              </div>
+            </section>
+            <section className='flex flex-col pr-4 w-3/12 items-center justify-center '>
+              <h4 className='font-bold text-sm lg:text-base'>{latestPrice}</h4>
+            </section>
+            <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
+              <h3 className={`font-medium text-sm lg:text-base ${el?.day > "0" ? "text-green-600" : "text-red-600"}`}>{performance(el?.day)}</h3>
+            </section>
+            <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
+              <h3 className={`font-medium text-sm lg:text-base ${el?.week > "0" ? "text-green-600" : "text-red-600"}`}>{performance(el?.week)}</h3>
+            </section>
+            <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
+              <h3 className={`font-medium text-sm lg:text-base ${el?.month > "0" ? "text-green-600" : "text-red-600"}`}>{performance(el?.month)}</h3>
+            </section>
+            <section className='flex flex-col pr-4 w-2/12 items-center justify-center'>
+              <h3 className={`font-medium text-sm lg:text-base ${el?.year > "0" ? "text-green-600" : "text-red-600"}`}>{performance(el?.year)}</h3>
+            </section>
+          </tbody>
+        </table>
+      )
+    })
+
+    return (
+      <React.Fragment>
+        {listElements}
+      </React.Fragment>
+    )
+  }
 
   const TableMobile: React.FC<Props> = (props: Props) => {
     const { list } = props
@@ -93,9 +107,9 @@ const Table:React.FC = () => {
                 <p className='text-gray-500 text-sm'>{el?.currencyGroup}</p>
               </div>
             </section>
-            <section className='flex flex-col items-end mr-4'>
+            <section className='flex flex-col items-end w-24 pr-4'>
               <h4 className='font-bold'>{latestPrice}</h4>
-              <h3 className={`font-medium text-green-600 ${el?.day > "0" ? "text-green-600" : "text-red-600"}`}>{performance}</h3>
+              <h3 className={`font-medium ${el?.day > "0" ? "text-green-600" : "text-red-600"}`}>{performance}</h3>
             </section>
           </tbody>
         </table>
