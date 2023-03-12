@@ -17,6 +17,7 @@ const Table:React.FC = () => {
       week: string;
       month: string;
       year: string;
+      color: string
     }[]
   }
 
@@ -58,7 +59,9 @@ const Table:React.FC = () => {
         <table className='hidden w-full sm:block'>
           <tbody className='flex border-b-2 py-5 w-full hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
             <section className='flex ml-4 w-52 h-12 items-center  lg:w-3/12 lg:ml-8'>
-              <img className='h-7 mr-3 lg:h-9' src={el?.logo} alt='image-coin'></img>
+              <img className='h-7 mr-3 lg:h-9' src={el?.logo} alt='image-coin' style={{
+                color: "yellow", borderRadius: "100%", backgroundColor: el?.color 
+              }}></img>
               <div className='flex flex-col items-start'>
                 <h3 className='font-bold text-sm lg:text-base'>{el?.name}</h3>
                 <p className='text-gray-500 text-sm lg:text-base'>{el?.currencyGroup}</p>

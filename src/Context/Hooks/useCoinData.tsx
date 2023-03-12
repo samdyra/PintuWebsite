@@ -19,12 +19,14 @@ type CoinData = {
   week: string;
   month: string;
   year: string;
+  color: string
 };
 
 type Coin = {
     currencyGroup: string;
     name: string;
     logo: string;
+    color: string
 }
 
 type Price = {
@@ -45,6 +47,8 @@ type Result = {
     week: string;
     month: string;
     year: string;
+    color: string
+
 }
 
 
@@ -72,6 +76,7 @@ const useCoinData: UseCoinData = () => {
         currencyGroup: coin?.currencyGroup ?? "BTC",
         name: coin?.name ?? "Bitcoin",
         logo: coin?.logo ?? "https://s3-ap-southeast-1.amazonaws.com/static.pintu.co.id/assets/images/logo/circle_BTC.svg",
+        color: coin?.color ?? "red",
         latestPrice: pairCoinPrice?.latestPrice ?? "310695667",
         day: pairCoinPrice?.day ?? "0.42",
         week: pairCoinPrice?.week ?? "-9.20",
