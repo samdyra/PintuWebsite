@@ -50,7 +50,7 @@ const Table:React.FC = () => {
 
   const TableDekstop: React.FC<Props> = (props: Props) => {
     const { list } = props
-    const listElements = list && list.map((el) => {
+    const listElements = list && list?.map((el) => {
       const performance = (time: string) => performanceGetter(time)
       const latestPrice = `Rp${groupingFormat(parseFloat(el?.latestPrice))}`
 
