@@ -2,6 +2,12 @@
 
 A Web App that shows the price of many token list, using PINTU API [See here](https://pintu-website-livid.vercel.app/)
 
+> **Warning**
+> Due to CORS issues when using pintu's API (trade price changes API) the author 
+> build a custom server that passthrough the response from the API 
+> Therefore, the custom server that author made may be broken, and need to rebuilded to function again.
+> Please dont hesitate to contact author if by any chance there is an error on the production.
+
 ## Features
 
 - Website that track the crypto token price using PINTU API
@@ -23,7 +29,6 @@ A Web App that shows the price of many token list, using PINTU API [See here](ht
 - Tailwind
 - React Query
 ## Contributing
-
 #### Bug Reports & Feature Requests
 
 Please use the [issue tracker](https://github.com/samdyra/PintuWebsite/issues) to report any bugs or file feature requests.
