@@ -7,8 +7,7 @@ A Web App that shows the price of many token list, using PINTU API [See here](ht
 - Template Website that track the crypto token price using PINTU API
 - Fully responsive! you can open it clearly in mobile, tab, or dekstop
 
-## Installation
-
+## How this Website is Made
 - Written fully using react (typescript)
 - Used Hooks and Context to manage global state
 - Used React Query and Axios to fetch data
