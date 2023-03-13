@@ -4,6 +4,7 @@ import React, {
 import useCoinData from '../../Context/Hooks/useCoinData';
 import { Context as CoinListContext } from '../../Context/CryptoContext';
 import { performanceGetter, groupingFormat } from '../../Helpers/GlobalHelpers';
+import { Shimmer } from 'react-shimmer';
 
 const Table:React.FC = () => {
   // ---------- TYPES ----------
@@ -19,6 +20,14 @@ const Table:React.FC = () => {
       year: string;
       color: string
     }[]
+    isLoading: boolean
+    isError: boolean
+  }
+
+  interface Shimmer {
+    height: number;
+    width: number;
+    number: number;
   }
 
   // ---------- STATE ----------
@@ -51,6 +60,13 @@ const Table:React.FC = () => {
 
   const TableDekstop: React.FC<Props> = (props: Props) => {
     const { list } = props
+    
+    if (props.isLoading || props.isError) {
+      return (
+        <Shimmering height={80} number={20} width={600} />
+      )
+    }
+  
     const listElements = list && list?.map((el) => {
       const performance = (time: string) => performanceGetter(time)
       const latestPrice = `Rp${groupingFormat(parseFloat(el?.latestPrice))}`
@@ -59,9 +75,7 @@ const Table:React.FC = () => {
         <table className='hidden w-full sm:block'>
           <tbody className='flex border-b-2 py-5 w-full hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
             <section className='flex ml-4 w-52 h-12 items-center  lg:w-3/12 lg:ml-8'>
-              <img className='h-7 mr-3 lg:h-9' src={el?.logo} alt='image-coin' style={{
-                color: "yellow", borderRadius: "100%", backgroundColor: el?.color 
-              }}></img>
+              <img className='h-7 mr-3 lg:h-9' src={el?.logo} alt='image-coin'></img>
               <div className='flex flex-col items-start'>
                 <h3 className='font-bold text-sm lg:text-base'>{el?.name}</h3>
                 <p className='text-gray-500 text-sm lg:text-base'>{el?.currencyGroup}</p>
@@ -96,10 +110,15 @@ const Table:React.FC = () => {
 
   const TableMobile: React.FC<Props> = (props: Props) => {
     const { list } = props
+    if (props.isLoading || props.isError) {
+      return (
+        <Shimmering height={40} number={10} width={370} />
+      )
+    }
+  
     const listElements = list && list?.map((el) => {
       const performance = performanceGetter(el?.day)
       const latestPrice = `Rp${groupingFormat(parseFloat(el?.latestPrice))}`
-      
       return (
         <table className='w-full sm:hidden hover:bg-slate-100 hover:cursor-pointer transition duration-150 ease-out hover:ease-in'>
           <tbody className='flex border-b-2 py-5 w-full justify-between'>
@@ -130,10 +149,27 @@ const Table:React.FC = () => {
   const RenderTable: React.FC = () => (
     <main className="sm:border-2 sm:border-b-0 sm:rounded-lg sm:mx-8" >
       <TableHeader />
-      <TableDekstop list={state}/>
-      <TableMobile list={state}/>
+      <TableDekstop list={state} isLoading={isLoading} isError={isError}/>
+      <TableMobile list={state} isLoading={isLoading} isError={isError}/>
     </main>
   )
+
+  const Shimmering: React.FC<Shimmer> = ({
+    height, width, number 
+  }) => {
+    const numberOfShimmer = Array(number).fill(0)
+    const shimmer = numberOfShimmer.map(() => (
+      <div className='mb-5 mt-3 flex justify-center'>
+        <Shimmer height={height} width={width} className="rounded-xl"/>
+      </div>
+    ))
+
+    return (
+      <React.Fragment>
+        {shimmer}
+      </React.Fragment>
+    )
+  }
 
 
   // ---------- RENDER FUNCTIONS ----------

@@ -55,13 +55,13 @@ type Result = {
 const useCoinData: UseCoinData = () => {
   const [ coinData, setCoinData ] = useState<CoinData[]>([]);
   const {
-    data: coinDescription, isLoading: isCoinDescLoading, isError: isCoinDescError 
+    data: coinDescription, isLoading: isCoinDescLoading, isError: isCoinDescError, isFetching: isCoinDescFetching 
   } = useQuery('coinDesc', fetchDataCoin)
   const {
-    data: coinPrice, isLoading: isCoinPriceLoading, isError: isCoinPriceError 
+    data: coinPrice, isLoading: isCoinPriceLoading, isError: isCoinPriceError, isFetching: isCoinPriceFetching 
   } = useQuery('coinPrice', fetchDataPrice)
 
-  const isLoading:boolean = isCoinDescLoading || isCoinPriceLoading;
+  const isLoading:boolean = isCoinDescLoading || isCoinPriceLoading || isCoinDescFetching || isCoinPriceFetching;
   const isError:boolean = isCoinDescError || isCoinPriceError;
 
   const fetchCoinData: FetchCoinData = async () => {
