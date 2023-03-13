@@ -4,7 +4,7 @@ A Web App that shows the price of many token list, using PINTU API [See here](ht
 
 ## Features
 
-- Template Website that track the crypto token price using PINTU API
+- Website that track the crypto token price using PINTU API
 - Fully responsive! you can open it clearly in mobile, tab, or dekstop
 
 ## How this Website is Made
